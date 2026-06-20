@@ -1,0 +1,6 @@
+{
+  "name": "PrimeImmobilier",
+  "description": "Réseau et opportunités immobilières haut de gamme d'adresse PrimeImmobilier avec des animations de parallaxes de prestige, simulateurs interactifs de rénovation énergétique, et design confidentiel épuré.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
