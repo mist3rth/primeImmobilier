@@ -18,6 +18,7 @@ import { NavigationProvider, useNavigation } from './context/NavigationContext';
 // Lazy loading components
 const ProjectDetailPage = lazy(() => import('./components/ProjectDetailPage'));
 const PillarDetailPage = lazy(() => import('./components/PillarDetailPage'));
+const ProjectInquiryPage = lazy(() => import('./components/ProjectInquiryPage'));
 const LegalModal = lazy(() => import('./components/LegalModal'));
 
 const PremiumLoader = () => (
@@ -32,6 +33,7 @@ function AppContent() {
   const {
     activeProjectId,
     activePillarId,
+    activeInquiryProjectId,
     legalModalOpen,
     legalModalType,
     targetSectionId,
@@ -54,7 +56,7 @@ function AppContent() {
 
     observer.observe(footer);
     return () => observer.disconnect();
-  }, [activeProjectId, activePillarId]);
+  }, [activeProjectId, activePillarId, activeInquiryProjectId]);
 
   // Reactive and reliable scroll handler synced with lifecycle
   useEffect(() => {
@@ -92,6 +94,10 @@ function AppContent() {
             <ProjectDetailPage 
               projectId={activeProjectId} 
               onBack={() => closeProjectOrPillar('active-projects')} 
+            />
+          ) : activeInquiryProjectId ? (
+            <ProjectInquiryPage
+              projectId={activeInquiryProjectId}
             />
           ) : activePillarId ? (
             <PillarDetailPage

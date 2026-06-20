@@ -19,12 +19,12 @@ export default function AdvisorPromo() {
   return (
     <section
       ref={containerRef}
-      className="relative h-[65vh] sm:h-[80vh] md:h-[90vh] min-h-[550px] bg-stone-950 flex flex-col justify-between overflow-hidden text-white py-16 px-6 sm:px-12 md:px-20"
+      className="relative min-h-[680px] sm:min-h-0 sm:h-[80vh] md:h-[90vh] bg-stone-950 flex flex-col justify-between overflow-hidden text-white py-12 sm:py-16 px-6 sm:px-12 md:px-20"
     >
       {/* Background container with overflow hidden to isolate parallax movement */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none select-none z-0">
         <motion.div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-110"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-[135%] sm:scale-110"
           style={{
             backgroundImage: "url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=80')",
             y

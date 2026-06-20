@@ -5,9 +5,9 @@ import { useNavigation } from '../context/NavigationContext';
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { activeProjectId, activePillarId, navigateToSection } = useNavigation();
+  const { activeProjectId, activePillarId, activeInquiryProjectId, navigateToSection } = useNavigation();
 
-  const isDetailPage = !!activeProjectId || !!activePillarId;
+  const isDetailPage = !!activeProjectId || !!activePillarId || !!activeInquiryProjectId;
 
   useEffect(() => {
     const handleScroll = () => {
