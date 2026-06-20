@@ -34,10 +34,10 @@ export default function Navbar() {
   return (
     <nav
       id="main-navigation"
-      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 border-b ${
         forceDarkTheme
-          ? 'bg-white/95 backdrop-blur-md py-4 shadow-sm border-b border-border-beige'
-          : 'bg-transparent py-6'
+          ? 'bg-white/95 backdrop-blur-md py-4 shadow-[0_4px_20px_rgba(0,0,0,0.03)] border-stone-200/40'
+          : 'bg-transparent py-6 border-transparent'
       }`}
     >
       <div className="w-full px-[20px] flex justify-between items-center">

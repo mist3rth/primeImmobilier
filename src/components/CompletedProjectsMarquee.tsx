@@ -1,15 +1,19 @@
 import { BadgeCheck, ArrowUpRight } from 'lucide-react';
 import { PROJECTS } from '../constants/data';
+import { useNavigation } from '../context/NavigationContext';
 
 export default function CompletedProjectsMarquee() {
+  const { openProject } = useNavigation();
+
   // Extract real completed projects with enriched specifications
   const completedProjects = PROJECTS.filter(p => p.status === 'completed');
   
   // Duplicate the list of completed projects to ensure seamless, infinite loop scrolling
   const duplicatedItems = [...completedProjects, ...completedProjects, ...completedProjects, ...completedProjects];
 
-  const handleOpenDetails = (id: string) => {
-    window.dispatchEvent(new CustomEvent('open-project-details', { detail: id }));
+  const handleOpenDetails = (id: string, e: React.MouseEvent<HTMLButtonElement>) => {
+    e.currentTarget.blur(); // Enlever le focus pour redémarrer l'animation immédiatement
+    openProject(id);
   };
 
   return (
@@ -40,7 +44,7 @@ export default function CompletedProjectsMarquee() {
           {duplicatedItems.map((item, index) => (
             <button
               key={`${item.id}-${index}`}
-              onClick={() => handleOpenDetails(item.id)}
+              onClick={(e) => handleOpenDetails(item.id, e)}
               className="w-[280px] sm:w-[350px] shrink-0 bg-white border border-border-beige p-4 transition-all duration-300 hover:shadow-lg group cursor-pointer text-left focus:outline-none rounded-2xl"
             >
               {/* Image box */}

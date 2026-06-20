@@ -147,34 +147,14 @@ export default function ActiveProjects() {
           </p>
         </div>
 
-        {/* 3 Vertically oriented card models */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
-          {activeProjects.map((p, idx) => (
-            <ProjectCard
-              key={p.id}
-              p={p}
-              idx={idx}
-              setSelectedProject={setSelectedProject}
-            />
-          ))}
-        </div>
-
-      </div>
-
-      {/* Expo Inquiry Modal Overlay */}
-      <AnimatePresence>
-        {selectedProject && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-dark/85 z-[300] flex items-start sm:items-center justify-center p-4 backdrop-blur-sm overflow-y-auto"
-          >
+        <AnimatePresence mode="wait">
+          {selectedProject ? (
             <motion.div
-              initial={{ scale: 0.95, y: 15 }}
-              animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.95 }}
-              className="bg-white border border-accent/20 max-w-lg w-full p-6 sm:p-8 shadow-2xl relative rounded-2xl my-auto max-h-[90vh] overflow-y-auto"
+              key="inquiry-form-container"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              className="bg-stone-50 border border-border-beige max-w-2xl mx-auto p-6 sm:p-10 rounded-2xl relative shadow-sm"
             >
               <button
                 onClick={() => {
@@ -182,8 +162,8 @@ export default function ActiveProjects() {
                   setIsSubmitted(false);
                   setContactForm({ name: '', email: '', phone: '', agreed: false });
                 }}
-                className="absolute top-6 right-6 text-dark hover:text-accent cursor-pointer transition-colors"
-                aria-label="Fermer"
+                className="absolute top-6 right-6 text-stone-400 hover:text-dark cursor-pointer transition-colors p-1.5 rounded-full hover:bg-stone-100"
+                aria-label="Retour aux projets"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -211,7 +191,7 @@ export default function ActiveProjects() {
                         value={contactForm.name}
                         onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
                         placeholder="ex. Jean-François Mercier"
-                        className="w-full bg-surface border border-border-beige text-dark text-xs px-4 py-3 focus:outline-none focus:border-accent transition-colors rounded-lg"
+                        className="w-full bg-white border border-border-beige text-dark text-xs px-4 py-3 focus:outline-none focus:border-accent transition-colors rounded-lg"
                       />
                     </div>
 
@@ -225,7 +205,7 @@ export default function ActiveProjects() {
                         value={contactForm.email}
                         onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
                         placeholder="jf.mercier@cabinet-mercier.fr"
-                        className="w-full bg-surface border border-border-beige text-dark text-xs px-4 py-3 focus:outline-none focus:border-accent transition-colors rounded-lg"
+                        className="w-full bg-white border border-border-beige text-dark text-xs px-4 py-3 focus:outline-none focus:border-accent transition-colors rounded-lg"
                       />
                     </div>
 
@@ -238,7 +218,7 @@ export default function ActiveProjects() {
                         value={contactForm.phone}
                         onChange={(e) => setContactForm({ ...contactForm, phone: e.target.value })}
                         placeholder="+33 (0) 6 12 34 56 78"
-                        className="w-full bg-surface border border-border-beige text-dark text-xs px-4 py-3 focus:outline-none focus:border-accent transition-colors rounded-lg"
+                        className="w-full bg-white border border-border-beige text-dark text-xs px-4 py-3 focus:outline-none focus:border-accent transition-colors rounded-lg"
                       />
                     </div>
 
@@ -334,14 +314,31 @@ export default function ActiveProjects() {
                     }}
                     className="w-full bg-dark hover:bg-accent text-white hover:text-dark py-3.5 text-xs font-bold tracking-widest uppercase transition-colors duration-300 cursor-pointer rounded-lg"
                   >
-                    FERMER LE PORTAIL
+                    RETOURNER AUX PROJETS
                   </button>
                 </div>
               )}
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          ) : (
+            <motion.div
+              key="projects-grid"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12"
+            >
+              {activeProjects.map((p, idx) => (
+                <ProjectCard
+                  key={p.id}
+                  p={p}
+                  idx={idx}
+                  setSelectedProject={setSelectedProject}
+                />
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </section>
   );
 }
