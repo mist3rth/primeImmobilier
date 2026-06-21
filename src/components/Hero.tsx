@@ -143,17 +143,17 @@ export default function Hero() {
 
             {/* Spec lines */}
             <div className="space-y-3.5 border-t border-white/10 pt-5 mb-6 font-mono text-[11px] text-stone-300">
-              <div className="flex justify-between">
+              <div className="flex flex-col sm:flex-row sm:justify-between gap-0.5">
                 <span>LOCALISATION :</span>
-                <span className="text-white">Paris IVe, France</span>
+                <span className="text-white sm:text-right">Paris IVe, France</span>
               </div>
-              <div className="flex justify-between">
+              <div className="flex flex-col sm:flex-row sm:justify-between gap-0.5">
                 <span>RECONNAISSANCE :</span>
-                <span className="text-accent font-bold">Label Excellence Haute Couture</span>
+                <span className="text-accent font-bold sm:text-right">Label Excellence Haute Couture</span>
               </div>
-              <div className="flex justify-between">
+              <div className="flex flex-col sm:flex-row sm:justify-between gap-0.5">
                 <span>ESPACES :</span>
-                <span className="text-white font-medium">Du 3 au 6 Pièces d'exception</span>
+                <span className="text-white font-medium sm:text-right">Du 3 au 6 Pièces d'exception</span>
               </div>
             </div>
 
