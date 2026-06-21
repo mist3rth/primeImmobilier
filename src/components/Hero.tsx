@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react';
-import { Play, X, ArrowDown, ChevronRight, Sparkles } from 'lucide-react';
+import { Play, X, ChevronRight, Sparkles } from 'lucide-react';
 
 export default function Hero() {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
@@ -170,13 +170,6 @@ export default function Hero() {
           </motion.div>
         </div>
 
-      </div>
-
-      {/* Bounce scroll down helper */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 hidden lg:flex flex-col items-center cursor-pointer opacity-70 hover:opacity-100 transition-opacity"
-           onClick={() => document.getElementById('intro-text')?.scrollIntoView({ behavior: 'smooth' })}>
-        <span className="text-[10px] font-mono tracking-widest uppercase text-muted-gray mb-1">Défiler</span>
-        <ArrowDown className="w-4 h-4 text-accent animate-bounce" />
       </div>
 
       {/* Video Modal Player Dialog */}
