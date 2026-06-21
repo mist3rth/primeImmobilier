@@ -90,7 +90,7 @@ export default function IntroText() {
         </div>
 
         {/* Right column: Offset Overlapping Images with parallax style and fine border */}
-        <div className="lg:col-span-6 relative flex items-center justify-center min-h-[450px] lg:min-h-[600px] mt-10 lg:mt-0">
+        <div className="lg:col-span-6 relative flex items-center justify-center min-h-[450px] lg:min-h-0 lg:aspect-square mt-10 lg:mt-0">
           
           {/* Main Background Image (Lower Left) */}
           <motion.div
