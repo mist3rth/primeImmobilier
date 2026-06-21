@@ -122,7 +122,7 @@ export default function FinalCTA() {
                         key={it}
                         type="button"
                         onClick={() => setFormData({ ...formData, intent: it })}
-                        className={`py-3.5 px-4 text-xs font-semibold uppercase tracking-wider transition-all duration-300 border font-mono cursor-pointer rounded-lg ${
+                        className={`py-3.5 px-1.5 sm:px-4 text-[10px] sm:text-xs font-semibold uppercase tracking-normal sm:tracking-wider transition-all duration-300 border font-mono cursor-pointer rounded-lg ${
                           formData.intent === it
                             ? 'bg-accent/15 border-accent text-accent'
                             : 'bg-stone-900/60 border-stone-800 text-stone-400 hover:text-white hover:border-stone-700'
