@@ -66,9 +66,9 @@ export default function IntroText() {
             transition={{ duration: 0.5, delay: 0.45 }}
             className="grid grid-cols-2 gap-4 pt-4 border-t border-border-beige"
           >
-            <div className="flex items-start space-x-3">
-              <div className="p-2 bg-white text-accent border border-border-beige mt-1 rounded-lg">
-                <Building2 className="w-4 h-4" />
+            <div className="flex flex-col items-start space-y-3 sm:flex-row sm:items-start sm:space-y-0 sm:space-x-3">
+              <div className="p-2 bg-white text-accent border border-border-beige rounded-lg shrink-0">
+                <Building2 className="w-8 h-8 sm:w-4 sm:h-4" />
               </div>
               <div>
                 <h4 className="text-sm font-semibold text-dark">Construction d'Art</h4>
@@ -76,9 +76,9 @@ export default function IntroText() {
               </div>
             </div>
 
-            <div className="flex items-start space-x-3">
-              <div className="p-2 bg-white text-accent border border-border-beige mt-1 rounded-lg">
-                <MapPin className="w-4 h-4" />
+            <div className="flex flex-col items-start space-y-3 sm:flex-row sm:items-start sm:space-y-0 sm:space-x-3">
+              <div className="p-2 bg-white text-accent border border-border-beige rounded-lg shrink-0">
+                <MapPin className="w-8 h-8 sm:w-4 sm:h-4" />
               </div>
               <div>
                 <h4 className="text-sm font-semibold text-dark">Emplacements Exclusifs</h4>
