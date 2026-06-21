@@ -49,8 +49,12 @@ function AppContent() {
 
     const observer = new ResizeObserver((entries) => {
       for (const entry of entries) {
-        const height = entry.borderBoxSize?.[0]?.blockSize || entry.contentRect.height;
-        setFooterHeight(height);
+        if (window.innerWidth >= 768) {
+          const height = entry.borderBoxSize?.[0]?.blockSize || entry.contentRect.height;
+          setFooterHeight(height);
+        } else {
+          setFooterHeight(0);
+        }
       }
     });
 

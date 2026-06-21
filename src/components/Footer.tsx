@@ -122,6 +122,12 @@ const STYLES = `
   background-clip: text;
   filter: drop-shadow(0px 0px 20px rgba(200, 169, 110, 0.15));
 }
+
+@media (min-width: 768px) {
+  .md-clip-reveal {
+    clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0 100%);
+  }
+}
 `;
 
 // -------------------------------------------------------------------------
@@ -226,17 +232,17 @@ export default function Footer() {
       
       {/* 
         The "Curtain Reveal" Wrapper:
-        It sits in standard flow. Because it has clip-path, its contents
-        are ONLY visible within its bounding box. 
+        It sits in standard flow. Because it has clip-path on desktop, its contents
+        are ONLY visible within its bounding box. On mobile it renders statically.
       */}
       <div
         ref={wrapperRef}
-        className="relative h-[100dvh] w-full select-none"
-        style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
+        id="footer"
+        className="relative h-auto md:h-[100vh] w-full select-none md-clip-reveal"
       >
-        {/* The actual footer stays fixed to the viewport underneath everything */}
+        {/* The actual footer stays fixed underneath on desktop, flows naturally on mobile */}
         <footer 
-          className="fixed bottom-0 left-0 flex h-[100dvh] w-full flex-col justify-between overflow-hidden bg-stone-950 text-white bg-cover bg-center cinematic-footer-wrapper border-t border-accent/20 z-0"
+          className="relative md:fixed md:bottom-0 md:left-0 flex min-h-screen md:h-[100vh] w-full flex-col justify-between overflow-hidden bg-stone-950 text-white bg-cover bg-center cinematic-footer-wrapper border-t border-accent/20 z-0 py-12 md:py-0"
           style={{ backgroundImage: "url('/footer.webp')" }}
         >
           {/* Ambient Light & Grid Background */}
