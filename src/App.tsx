@@ -29,7 +29,6 @@ const PremiumLoader = () => (
 );
 
 function AppContent() {
-  const [footerHeight, setFooterHeight] = useState(0);
   const {
     activeProjectId,
     activePillarId,
@@ -41,26 +40,6 @@ function AppContent() {
     closeLegal,
     clearTargetSection
   } = useNavigation();
-
-  // ResizeObserver for reliable footer height tracking without polling
-  useEffect(() => {
-    const footer = document.getElementById('footer');
-    if (!footer) return;
-
-    const observer = new ResizeObserver((entries) => {
-      for (const entry of entries) {
-        if (window.innerWidth >= 768) {
-          const height = entry.borderBoxSize?.[0]?.blockSize || entry.contentRect.height;
-          setFooterHeight(height);
-        } else {
-          setFooterHeight(0);
-        }
-      }
-    });
-
-    observer.observe(footer);
-    return () => observer.disconnect();
-  }, [activeProjectId, activePillarId, activeInquiryProjectId]);
 
   // Reactive and reliable scroll handler synced with lifecycle
   useEffect(() => {
@@ -92,7 +71,7 @@ function AppContent() {
       {/* 1. Global Header Navigation */}
       <Navbar />
 
-      <div className="relative z-10 bg-white" style={{ marginBottom: `${footerHeight}px` }}>
+      <div className="relative z-10 bg-white">
         <Suspense fallback={<PremiumLoader />}>
           {activeProjectId ? (
             <ProjectDetailPage 
